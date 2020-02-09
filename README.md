@@ -36,7 +36,7 @@ The package looks for the database configuration inside the test_settings sectio
 
 ## Writing Nightwatch tests with SQL assertions
 
-This first publish adds the .recordCountIs(expectedCount, tableName, whereClause (or null to return count of entire table)) assertion which allows you to verify a specified row/record count against a WHERE clause you specify.
+This first publish adds the **.recordCountIs(***expectedCount, tableName, whereClause--or null to return count of entire table***)** assertion which allows you to verify a specified row/record count against a WHERE clause you specify.
 
 Example:
 
@@ -48,3 +48,9 @@ module.exports = {
             .recordCountIs(1, "tableNameHere", "myColumn = 'what I want'");
     }
 }
+```
+
+```sh
+√ Testing if the record count (first_name = 'John' AND last_name = 'Wick') equals 0 (99ms)
+√ Testing if the record count (first_name = 'John' AND last_name = 'Wick') equals 3 (103ms)
+```
