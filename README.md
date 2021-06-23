@@ -56,7 +56,7 @@ For example you could read the config out of globals.js for a specific staging e
 
 globals.js could look like this where you could have entries for staging and other environments or perhaps multiple different databases within the sql collection.
 
-````js
+```js
 env: {
     staging: {
         sql: {
@@ -78,7 +78,6 @@ env: {
 }
 ```
 
-
 ## Writing Nightwatch tests with SQL assertions
 
 This first publish adds the **.recordCountIs(***expectedCount, tableName, whereClause--or null to return count of entire table***)** assertion which allows you to verify a specified row/record count against a WHERE clause you specify.
@@ -93,7 +92,7 @@ module.exports = {
             .recordCountIs(1, "tableNameHere", "myColumn = 'what I want'");
     }
 }
-````
+```
 
 ```sh
 √ Testing if the record count (first_name = 'John' AND last_name = 'Wick') equals 0 (99ms)
