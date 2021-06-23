@@ -6,6 +6,8 @@ Custom Nightwatch.js assertions for writing tests against mssql databases
 
 When running NightwatchJS or browser-based selenium tests it can be useful to verify that actions done by the user or your automation on the front end correctly update the backend. This assertion library allows you to connect to an MSSQL database and write tests or checks against the database tables.
 
+[Full database testing tutorial using nightwatch-mssql-assertions](https://www.davidmello.com/database-testing-with-nightwatchjs/)
+
 ## Installation instructions
 
 In your Nightwatch test project
