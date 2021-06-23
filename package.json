@@ -11,17 +11,20 @@
         "url": "git+https://github.com/reallymello/nightwatch-mssql-assertions.git"
     },
     "keywords": [
-    "NightwatchJS",
-    "custom",
-    "assertions",
-    "mssql",
-    "database",
-    "assert"
-  ],
+        "NightwatchJS",
+        "custom",
+        "assertions",
+        "mssql",
+        "database",
+        "assert"
+    ],
     "author": "David Mello (https://www.davidmello.com)",
     "license": "Apache-2.0",
     "bugs": {
         "url": "https://github.com/reallymello/nightwatch-mssql-assertions/issues"
     },
-    "homepage": "https://github.com/reallymello/nightwatch-mssql-assertions#readme"
+    "homepage": "https://github.com/reallymello/nightwatch-mssql-assertions#readme",
+    "dependencies": {
+        "mssql": "^7.1.3"
+    }
 }
