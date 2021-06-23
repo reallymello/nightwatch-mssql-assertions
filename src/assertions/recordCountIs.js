@@ -1,4 +1,4 @@
-exports.assertion = function (expectedCount, table, whereClause, msg) {
+exports.assertion = function (expectedCount, table, whereClause, dbConfig) {
     let actual = -1;
 
     this.formatMessage = function () {
@@ -67,7 +67,7 @@ exports.assertion = function (expectedCount, table, whereClause, msg) {
      */
     this.command = function (callback) {
         const sql = require('mssql')
-        const config = {
+        const config = dbConfig ? dbConfig : {
             user: this.api.globals.dbUsername,
             password: this.api.globals.dbPassword,
             server: this.api.globals.dbAddress,
@@ -78,6 +78,7 @@ exports.assertion = function (expectedCount, table, whereClause, msg) {
                 enableArithAbort: true
             }
         };
+        
         let query = `SELECT COUNT(*) as record_count FROM ${table}`;
         if (whereClause) {
             query += ` WHERE ${whereClause}`;

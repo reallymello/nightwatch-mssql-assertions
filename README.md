@@ -1,4 +1,5 @@
 # nightwatch-mssql-assertions
+
 Custom Nightwatch.js assertions for writing tests against mssql databases
 
 ## Why write tests against the database during testing?
@@ -7,7 +8,7 @@ When running NightwatchJS or browser-based selenium tests it can be useful to ve
 
 ## Installation instructions
 
-In your Nightwatch test project 
+In your Nightwatch test project
 
 > npm install nightwatch-mssql-assertions --save
 
@@ -34,6 +35,48 @@ The package looks for the database configuration inside the test_settings sectio
     }
 ```
 
+### Specific config passing
+
+In the 2.x versions I've added the ability to _optionally_ pass the entire database configuration object for more flexibility and more advanced multi-environment test configurations and globals files.
+
+_If the configuration object is not passed in as a third parameter in the command it will default to use the above example_
+
+For example you could read the config out of globals.js for a specific staging environment database configuration.
+
+```js
+'Verify only one John Doe': function (browser) {
+        browser
+            .assert
+            .recordCountIs(1, "people", "first_name = 'John' AND last_name = 'Doe'",
+            browser.globals.env.staging.sql.userDb);
+    },
+```
+
+globals.js could look like this where you could have entries for staging and other environments or perhaps multiple different databases within the sql collection.
+
+````js
+env: {
+    staging: {
+        sql: {
+            userDb: {
+                user: "usernameHere",
+                password: "something secure",
+                server: "server123.myco.org",
+                port: 1433,
+                database: "users",
+                encrypt: true,
+                options: {
+                    enableArithAbort: true,
+                    encrypt: true,
+                    trustServerCertificate: true // useful for self-signed certs in test environments
+                }
+            }
+        }
+    }
+}
+```
+
+
 ## Writing Nightwatch tests with SQL assertions
 
 This first publish adds the **.recordCountIs(***expectedCount, tableName, whereClause--or null to return count of entire table***)** assertion which allows you to verify a specified row/record count against a WHERE clause you specify.
@@ -48,7 +91,7 @@ module.exports = {
             .recordCountIs(1, "tableNameHere", "myColumn = 'what I want'");
     }
 }
-```
+````
 
 ```sh
 √ Testing if the record count (first_name = 'John' AND last_name = 'Wick') equals 0 (99ms)
