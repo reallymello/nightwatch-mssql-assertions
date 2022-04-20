@@ -16,7 +16,11 @@ In your Nightwatch test project
 
 In your Nightwatch.js nightwatch.json configuration add or append this entry
 
-> "custom_assertions_path": ["./node_modules/nightwatch-mssql-assertions/src/assertions"]
+> "plugins": ["nightwatch-mssql-assertions"]
+
+Or, if you are using a Nightwatch version older than 2.0 that doesn't use the plugin pattern use this entry instead
+
+> "custom_assertions_path": ["./node_modules/nightwatch-mssql-assertions/nightwatch/assertions"]
 
 The package looks for the database configuration inside the test_settings section of the nightwatch.json file. Add a globals section if it doesn't already exist inside one of your nested test_settings such as default for example.
 
@@ -80,18 +84,20 @@ env: {
 
 ## Writing Nightwatch tests with SQL assertions
 
-This first publish adds the **.recordCountIs(***expectedCount, tableName, whereClause--or null to return count of entire table***)** assertion which allows you to verify a specified row/record count against a WHERE clause you specify.
+This first publish adds the **.recordCountIs(\***expectedCount, tableName, whereClause--or null to return count of entire table**\*)** assertion which allows you to verify a specified row/record count against a WHERE clause you specify.
 
 Example:
 
 ```js
 module.exports = {
-    'Database count test': function(browser) {
-        browser
-            .assert
-            .recordCountIs(1, "tableNameHere", "myColumn = 'what I want'");
-    }
-}
+  "Database count test": function (browser) {
+    browser.assert.recordCountIs(
+      1,
+      "tableNameHere",
+      "myColumn = 'what I want'"
+    );
+  },
+};
 ```
 
 ```sh
