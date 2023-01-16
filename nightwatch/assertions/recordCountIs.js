@@ -70,12 +70,13 @@ exports.assertion = function (expectedCount, table, whereClause, dbConfig) {
         const config = dbConfig ? dbConfig : {
             user: this.api.globals.dbUsername,
             password: this.api.globals.dbPassword,
+            database: this.api.globals.dbName,
             server: this.api.globals.dbAddress,
             port: this.api.globals.dbPort,
-            database: this.api.globals.dbName,
             encrypt: true,
             options: {
-                enableArithAbort: true
+                enableArithAbort: true,
+                trustServerCertificate: true
             }
         };
         
