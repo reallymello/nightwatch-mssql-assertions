@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/mssql/server:latest
 
 RUN mkdir -p /opt/scripts
-COPY database.sql /opt/scripts
+COPY ./test/database.sql /opt/scripts
 
 ENV MSSQL_SA_PASSWORD=ThisIsAStrongP@assword!SortOf
 ENV ACCEPT_EULA=Y
