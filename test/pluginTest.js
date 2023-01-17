@@ -23,7 +23,8 @@ module.exports = {
     table.rows.add(null, 'Jane', 'Doe');
     table.rows.add(null, 'Really', 'Mello');
 
-    const request = new sql.Request(config);
+    const pool = new sql.ConnectionPool(config);
+    const request = new sql.Request(pool);
     request.bulk(table, (err, result) => {
       if (err) {
         console.error(err);
