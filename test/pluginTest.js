@@ -1,5 +1,5 @@
 module.exports = {
-  test: async (browser) => {
+  before: async () => {
     const sql = require('mssql');
     const config = {
       user: browser.globals.dbUsername,
@@ -39,20 +39,15 @@ module.exports = {
         });
       }
     });
-    /*const request = new sql.Request(pool);
-    request.bulk(table, (err, result) => {
-      if (err) {
-        console.error(err);
-      } else {
-        console.info(result);
-        pool.close();
-      }
-    });*/
-
+  },
+  'Can match 1 record': async (browser) => {
     browser.assert.recordCountIs(
       1,
       'people',
       "first_name = 'Jane' AND last_name = 'Doe'"
     );
+  },
+  'Will pass 0 records': async (browser) => {
+    browser.assert.recordCountIs(0, 'people', "first_name = 'Jacob'");
   },
 };
