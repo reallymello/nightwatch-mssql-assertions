@@ -1,4 +1,4 @@
-name: Setup DB and Test
+name: Node.js Test
 
 on:
   push:
@@ -9,23 +9,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
-
+    services:
+      mssql:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        env:
+          SA_PASSWORD: ThisIsAStrongP@assword!SortOf
+          ACCEPT_EULA: 'Y'
+        ports:
+          - 1433:1433
     steps:
+    - script: |
+      mkdir -p /opt/scripts
       - uses: actions/checkout@v3
-      - name: Build the Docker image
-        run: docker image build --file ./test/Dockerfile --tag nightwatchsqldb:1 .
-      - name: Run the Docker image
-        run: docker container run -p 1433:1433 --rm --name nightwatchsqlcontainer nightwatchsqldb:1 --detach
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      #      - run: npm install chromedriver@latest
-      #      - run: npm install
-      #      - run: npm run lint
+          node-version: 16
       - run: npm test
