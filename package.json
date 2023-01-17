@@ -30,7 +30,7 @@
     "mssql": "^9.0.1"
   },
   "devDependencies": {
-    "chromedriver": "^109.0.0",
+    "chromedriver": "^108.0.0",
     "nightwatch": "^2.6.10"
   }
 }
