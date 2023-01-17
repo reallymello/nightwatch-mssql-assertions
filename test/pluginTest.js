@@ -16,7 +16,7 @@ module.exports = {
 
     const table = new sql.Table('people');
     table.create = true;
-    table.columns.add('person_id', sql.Int, { identity: true, primary: true });
+    table.columns.add('person_id', sql.Int, { nullable: true, primary: true });
     table.columns.add('first_name', sql.VarChar(200), { nullable: false });
     table.columns.add('last_name', sql.VarChar(200), { nullable: false });
     table.rows.add(null, 'John', 'Doe');
