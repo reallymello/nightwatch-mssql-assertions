@@ -1,5 +1,7 @@
 # nightwatch-mssql-assertions
 
+[![Node.js Test](https://github.com/reallymello/nightwatch-mssql-assertions/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/reallymello/nightwatch-mssql-assertions/actions/workflows/node.js.yml)
+
 Custom Nightwatch.js assertions for writing tests against mssql databases
 
 ## Why write tests against the database during testing?
