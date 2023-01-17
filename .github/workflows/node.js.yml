@@ -17,9 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
-        run: docker image build --file ./test/Dockerfile --tag nightwatchsqldb:$(date +%s) .
+        run: docker image build --file ./test/Dockerfile --tag nightwatchsqldb:1 .
       - name: Run the Docker image
-        run: docker container run -p 1433:1433 --rm --name nightwatchsqlcontainer nightwatchsqldb:$(date +%s)
+        run: docker container run -p 1433:1433 --rm --name nightwatchsqlcontainer nightwatchsqldb:1
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
