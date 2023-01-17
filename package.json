@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "./nightwatch/types/index.d.ts",
   "scripts": {
-    "test": "rimraf ./tests_output/ && npx nightwatch"
+    "test": "rimraf ./tests_output/ && npx nightwatch --headless"
   },
   "repository": {
     "type": "git",
