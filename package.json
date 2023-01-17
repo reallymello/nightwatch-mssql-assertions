@@ -1,32 +1,36 @@
 {
-    "name": "nightwatch-mssql-assertions",
-    "version": "2.1.1",
-    "description": "Custom Nightwatch.js for writing assertions against mssql databases in your test cases.",
-    "main": "index.js",
-    "types": "./nightwatch/types/index.d.ts",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/reallymello/nightwatch-mssql-assertions.git"
-    },
-    "keywords": [
-        "NightwatchJS",
-        "custom",
-        "assertions",
-        "mssql",
-        "database",
-        "assert"
-    ],
-    "author": "David Mello (https://www.davidmello.com)",
-    "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/reallymello/nightwatch-mssql-assertions/issues"
-    },
-    "homepage": "https://github.com/reallymello/nightwatch-mssql-assertions#readme",
-    "dependencies": {
-        "@types/nightwatch": "^2.3.18",
-        "mssql": "^9.0.1"
-    }
+  "name": "nightwatch-mssql-assertions",
+  "version": "2.1.1",
+  "description": "Custom Nightwatch.js for writing assertions against mssql databases in your test cases.",
+  "main": "index.js",
+  "types": "./nightwatch/types/index.d.ts",
+  "scripts": {
+    "test": "rimraf ./tests_output/ && npx nightwatch --headless"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reallymello/nightwatch-mssql-assertions.git"
+  },
+  "keywords": [
+    "NightwatchJS",
+    "custom",
+    "assertions",
+    "mssql",
+    "database",
+    "assert"
+  ],
+  "author": "David Mello (https://www.davidmello.com)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/reallymello/nightwatch-mssql-assertions/issues"
+  },
+  "homepage": "https://github.com/reallymello/nightwatch-mssql-assertions#readme",
+  "dependencies": {
+    "@types/nightwatch": "^2.3.18"
+  },
+  "devDependencies": {
+    "chromedriver": "^108.0.0",
+    "mssql": "^9.0.1",
+    "nightwatch": "^2.6.10"
+  }
 }
