@@ -2,10 +2,20 @@ module.exports = {
   test: async () => {
     const sql = require('mssql');
 
+    const config = {
+      user: this.api.globals.dbUsername,
+      password: this.api.globals.dbPassword,
+      database: this.api.globals.dbName,
+      server: this.api.globals.dbAddress,
+      port: this.api.globals.dbPort,
+      encrypt: true,
+      options: {
+        enableArithAbort: true,
+        trustServerCertificate: true,
+      },
+    };
     try {
-      await sql.connect(
-        'Server=localhost,1433;Database=database;User Id=sa;Password=ThisIsAStrongP@assword!SortOf;Encrypt=true'
-      );
+      await sql.connect(config);
       const result = await sql.query`select * from mytable`;
       console.dir(result);
     } catch (err) {
