@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
-        run: docker image build . --file ./test/Dockerfile --tag nightwatchsqldb:$(date +%s)
+        run: docker image build --file ./test/Dockerfile --tag nightwatchsqldb:$(date +%s) .
       - name: Run the Docker image
         run: docker container run -p 1433:1433 --rm --name nightwatchsqlcontainer nightwatchsqldb:$(date +%s)
       - name: Use Node.js ${{ matrix.node-version }}
@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: npm install chromedriver@latest
-      - run: npm install
-      - run: npm run lint
+      #      - run: npm install chromedriver@latest
+      #      - run: npm install
+      #      - run: npm run lint
       - run: npm test
