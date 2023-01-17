@@ -1,13 +1,13 @@
 module.exports = {
-  test: async () => {
+  test: async (browser) => {
     const sql = require('mssql');
 
     const config = {
-      user: this.api.globals.dbUsername,
-      password: this.api.globals.dbPassword,
-      database: this.api.globals.dbName,
-      server: this.api.globals.dbAddress,
-      port: this.api.globals.dbPort,
+      user: browser.globals.dbUsername,
+      password: browser.globals.dbPassword,
+      database: browser.globals.dbName,
+      server: browser.globals.dbAddress,
+      port: browser.globals.dbPort,
       encrypt: true,
       options: {
         enableArithAbort: true,
