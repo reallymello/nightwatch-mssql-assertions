@@ -50,4 +50,18 @@ module.exports = {
   'Will pass 0 records': (browser) => {
     browser.assert.recordCountIs(0, 'people', "first_name = 'Jacob'");
   },
+  'Can pass own config': (browser) => {
+    browser.assert.recordCountIs(2, 'people', "last_name = 'Doe'", {
+      user: browser.globals.dbUsername,
+      password: browser.globals.dbPassword,
+      database: browser.globals.dbName,
+      server: browser.globals.dbAddress,
+      port: browser.globals.dbPort,
+      encrypt: true,
+      options: {
+        enableArithAbort: true,
+        trustServerCertificate: true,
+      },
+    });
+  },
 };
