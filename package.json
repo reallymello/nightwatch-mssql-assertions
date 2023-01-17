@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "./nightwatch/types/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\""
+    "test": "rimraf ./tests_output/ && npx nightwatch"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,9 @@
   "dependencies": {
     "@types/nightwatch": "^2.3.18",
     "mssql": "^9.0.1"
+  },
+  "devDependencies": {
+    "chromedriver": "^109.0.0",
+    "nightwatch": "^2.6.10"
   }
 }
