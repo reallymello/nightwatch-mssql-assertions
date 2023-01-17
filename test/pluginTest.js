@@ -25,9 +25,21 @@ module.exports = {
 
     const pool = new sql.ConnectionPool(config);
     pool.connect((err) => {
-      console.error(err);
+      if (err) {
+        console.error('On pool.connect received error: ' + err);
+      } else {
+        const request = new sql.Request(pool);
+        request.bulk(table, (err, result) => {
+          if (err) {
+            console.error('On request.bulk received error: ' + err);
+          } else {
+            console.info(result);
+            pool.close();
+          }
+        });
+      }
     });
-    const request = new sql.Request(pool);
+    /*const request = new sql.Request(pool);
     request.bulk(table, (err, result) => {
       if (err) {
         console.error(err);
@@ -35,7 +47,7 @@ module.exports = {
         console.info(result);
         pool.close();
       }
-    });
+    });*/
 
     browser.assert.recordCountIs(
       1,
