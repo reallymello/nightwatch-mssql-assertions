@@ -1,11 +1,10 @@
 module.exports = {
   test: async (browser) => {
     const sql = require('mssql');
-    browser.pause(60000);
     const config = {
       user: browser.globals.dbUsername,
       password: browser.globals.dbPassword,
-      database: browser.globals.dbName,
+      database: 'master', //browser.globals.dbName,
       server: browser.globals.dbAddress,
       port: browser.globals.dbPort,
       encrypt: true,
@@ -14,9 +13,10 @@ module.exports = {
         trustServerCertificate: true,
       },
     };
+    console.log(config);
     try {
       await sql.connect(config);
-      const result = await sql.query`select * from mytable`;
+      const result = await sql.query`SELECT GETDATE();`;
       console.dir(result);
     } catch (err) {
       console.error(err);
