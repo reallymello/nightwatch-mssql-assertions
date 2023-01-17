@@ -1,7 +1,7 @@
 module.exports = {
   test: async (browser) => {
     const sql = require('mssql');
-
+    browser.pause(60000);
     const config = {
       user: browser.globals.dbUsername,
       password: browser.globals.dbPassword,
