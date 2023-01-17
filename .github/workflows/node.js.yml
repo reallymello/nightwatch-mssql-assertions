@@ -17,11 +17,18 @@ jobs:
           ACCEPT_EULA: 'Y'
         ports:
           - 1433:1433
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+
     steps:
-    - script: |
-      mkdir -p /opt/scripts
-      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm install chromedriver@latest
+      - run: npm install
+      - run: npm run lint
       - run: npm test
