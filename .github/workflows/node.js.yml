@@ -22,6 +22,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm install chromedriver@latest
+      - run: npm install chromedriver@108
       - run: npm install
       - run: npm test
