@@ -40,14 +40,14 @@ module.exports = {
       }
     });
   },
-  'Can match 1 record': async (browser) => {
+  'Can match 1 record': (browser) => {
     browser.assert.recordCountIs(
       1,
       'people',
       "first_name = 'Jane' AND last_name = 'Doe'"
     );
   },
-  'Will pass 0 records': async (browser) => {
+  'Will pass 0 records': (browser) => {
     browser.assert.recordCountIs(0, 'people', "first_name = 'Jacob'");
   },
 };
