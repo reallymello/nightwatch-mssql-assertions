@@ -24,12 +24,16 @@ module.exports = {
     table.rows.add(null, 'Really', 'Mello');
 
     const pool = new sql.ConnectionPool(config);
+    pool.connect((err) => {
+      console.error(err);
+    });
     const request = new sql.Request(pool);
     request.bulk(table, (err, result) => {
       if (err) {
         console.error(err);
       } else {
         console.info(result);
+        pool.close();
       }
     });
 
