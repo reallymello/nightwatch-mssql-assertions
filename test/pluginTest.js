@@ -16,12 +16,12 @@ module.exports = {
 
     const table = new sql.Table('people');
     table.create = true;
-    table.columns.add('person_id', sql.Int, { nullable: true, primary: true });
+    table.columns.add('person_id', sql.Int, { nullable: false });
     table.columns.add('first_name', sql.VarChar(200), { nullable: false });
     table.columns.add('last_name', sql.VarChar(200), { nullable: false });
-    table.rows.add(null, 'John', 'Doe');
-    table.rows.add(null, 'Jane', 'Doe');
-    table.rows.add(null, 'Really', 'Mello');
+    table.rows.add(1, 'John', 'Doe');
+    table.rows.add(2, 'Jane', 'Doe');
+    table.rows.add(3, 'Really', 'Mello');
 
     const pool = new sql.ConnectionPool(config);
     pool.connect((err) => {
