@@ -43,7 +43,7 @@ declare module 'nightwatch' {
           trustServerCertificate?: boolean;
         };
       }
-    ): Awaitable<NightwatchAPI, {}>;
+    ): Awaitable<NightwatchAPI, { [key: string]: any }>;
     runSql(
       query: string,
       dbConfig?: {
@@ -58,6 +58,6 @@ declare module 'nightwatch' {
           trustServerCertificate?: boolean;
         };
       }
-    ): Awaitable<NightwatchAPI, {}>;
+    ): Awaitable<NightwatchAPI, { [key: string]: any }>;
   }
 }
