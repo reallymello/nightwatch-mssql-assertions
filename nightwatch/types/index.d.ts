@@ -28,4 +28,36 @@ declare module 'nightwatch' {
       }
     ) => Awaitable<NightwatchAPI, NightwatchAssertionsResult<string>>;
   }
+  export interface NightwatchCustomCommands {
+    getSqlValue(
+      query: string,
+      dbConfig?: {
+        user: string;
+        password: string;
+        database: string;
+        server: string;
+        port: number;
+        encrypt?: boolean;
+        options?: {
+          enableArithAbort?: boolean;
+          trustServerCertificate?: boolean;
+        };
+      }
+    ): Awaitable<NightwatchAPI, {}>;
+    runSql(
+      query: string,
+      dbConfig?: {
+        user: string;
+        password: string;
+        database: string;
+        server: string;
+        port: number;
+        encrypt?: boolean;
+        options?: {
+          enableArithAbort?: boolean;
+          trustServerCertificate?: boolean;
+        };
+      }
+    ): Awaitable<NightwatchAPI, {}>;
+  }
 }
