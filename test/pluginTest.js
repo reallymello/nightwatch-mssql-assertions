@@ -64,4 +64,10 @@ module.exports = {
       },
     });
   },
+  'Can getSqlValue': async (browser) => {
+    let result = browser.getSqlValue(
+      "SELECT first_name FROM people WHERE first_name = 'Jacob'"
+    );
+    expect(result).to.equal('Jacob');
+  },
 };

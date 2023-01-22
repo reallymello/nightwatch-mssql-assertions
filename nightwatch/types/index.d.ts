@@ -1,4 +1,4 @@
-export * from '@types/nightwatch';
+export * from 'nightwatch';
 
 declare module 'nightwatch' {
   export interface NightwatchCustomAssertions {
