@@ -66,9 +66,9 @@ module.exports = {
   },
   'Can getSqlValue': async (browser) => {
     let result = await browser.getSqlValue(
-      "SELECT first_name FROM people WHERE first_name = 'Jacob'"
+      "SELECT first_name FROM people WHERE first_name = 'Jane'"
     );
-    expect(result).to.equal('Jacob');
+    expect(result).to.have.property('first_name', 'Jane');
   },
   'Can run query': async (browser) => {
     let result = await browser.runSql(
@@ -78,6 +78,6 @@ module.exports = {
     let postUpdateResult = await browser.getSqlValue(
       "SELECT first_name FROM people WHERE last_name = 'Mello'"
     );
-    expect(postUpdateResult).to.equal('Really really');
+    expect(postUpdateResult).to.have.property('first_name', 'Really really');
   },
 };

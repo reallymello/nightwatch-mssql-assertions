@@ -28,6 +28,8 @@ module.exports = class RunSql {
         status: -1,
         error: err.message,
       };
+    } finally {
+      sql.close();
     }
 
     return returnValue;
