@@ -26,11 +26,11 @@
   },
   "homepage": "https://github.com/reallymello/nightwatch-mssql-assertions#readme",
   "dependencies": {
-    "@types/nightwatch": "^2.3.18"
+    "@types/nightwatch": "^2.3.18",
+    "mssql": "^9.0.1"
   },
   "devDependencies": {
     "chromedriver": "^108.0.0",
-    "mssql": "^9.0.1",
     "nightwatch": "^2.6.10"
   }
 }
