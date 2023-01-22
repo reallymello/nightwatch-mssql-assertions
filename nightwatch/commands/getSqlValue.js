@@ -1,7 +1,6 @@
 module.exports = class GetSqlValue {
   async command(query, dbConfig) {
     const sql = require('mssql');
-    let returnValue;
 
     const config = dbConfig
       ? dbConfig
@@ -18,25 +17,18 @@ module.exports = class GetSqlValue {
           },
         };
 
-    sql
-      .connect(config)
-      .then(() => {
-        return sql.query(query);
-      })
-      .then((result) => {
-        sql.close();
-
-        returnValue = result.recordset[0][''];
-      })
-      .catch((err) => {
-        console.error(err);
-        sql.close();
-        returnValue = {
-          status: -1,
-          error: err.message,
-        };
-      });
-
-    return returnValue;
+    try {
+      await sql.connect(config);
+      let result = await sql.query(query);
+      return result.recordset[0][''];
+    } catch (err) {
+      console.error(
+        `There was an error executing the SQL command, received: ${err}`
+      );
+      return {
+        status: -1,
+        error: err.message,
+      };
+    }
   }
 };
