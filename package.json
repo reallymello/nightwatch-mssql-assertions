@@ -1,6 +1,6 @@
 {
   "name": "nightwatch-mssql-assertions",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "Custom Nightwatch.js for writing assertions against mssql databases in your test cases.",
   "main": "index.js",
   "types": "./nightwatch/types/index.d.ts",
