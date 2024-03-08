@@ -29,6 +29,7 @@
     "mssql": "^10.0.2"
   },
   "devDependencies": {
-    "nightwatch": "^3.4.1"
+    "nightwatch": "^3.4.1",
+    "rimraf": "^5.0.5"
   }
 }
