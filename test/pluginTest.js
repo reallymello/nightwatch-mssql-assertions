@@ -22,6 +22,8 @@ module.exports = {
     table.rows.add(1, 'John', 'Doe');
     table.rows.add(2, 'Jane', 'Doe');
     table.rows.add(3, 'Really', 'Mello');
+    table.rows.add(4, 'Jenny', 'Blue');
+    table.rows.add(5, 'Jenny', 'Blue');
 
     const pool = new sql.ConnectionPool(config);
     pool.connect((err) => {
@@ -69,6 +71,12 @@ module.exports = {
       "SELECT first_name FROM people WHERE first_name = 'Jane'"
     );
     expect(result).to.have.property('first_name', 'Jane');
+  },
+  'Can getSqlValues': async (browser) => {
+    let result = await browser.getSqlValues(
+      "SELECT first_name FROM people WHERE first_name = 'Jenny'"
+    );
+    expect(result.length).to.equal(2)
   },
   'Can run query': async (browser) => {
     let result = await browser.runSql(

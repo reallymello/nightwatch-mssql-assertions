@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  mssql:
+    image: mcr.microsoft.com/azure-sql-edge
+    restart: always
+    environment:
+      SA_PASSWORD: ThisIsAStrongP@assword!SortOf
+      ACCEPT_EULA: 'Y'
+      MSSQL_DB: nightwatchDb
+    ports:
+      - 1433:1433
