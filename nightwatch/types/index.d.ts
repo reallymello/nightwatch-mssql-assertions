@@ -51,6 +51,27 @@ declare module 'nightwatch' {
       }
     ) => Awaitable<NightwatchAPI, { [key: string]: any }>;
     /**
+     * Returns a list of data from your SQL table query as an array of key/value pair objects
+     * @param query The SQL SELECT statement to return data with
+     * @param dbConfig Database configuration object, can be passed in or read out of Nightwatch globals if saved under dbUsername, dbPassword, dbAddress, dbPort, dbName
+     * @returns Objects containing key value pairs keyed to the names of the columns in your query. e.g. { first_name: 'John' }
+     */
+    getSqlValues: (
+      query: string,
+      dbConfig?: {
+        user: string;
+        password: string;
+        database: string;
+        server: string;
+        port: number;
+        encrypt?: boolean;
+        options?: {
+          enableArithAbort?: boolean;
+          trustServerCertificate?: boolean;
+        };
+      }
+    ) => Awaitable<NightwatchAPI, { [key: string]: any }[]>;
+    /**
      * Will run a SQL query against the given database
      * @param query A valid SQL statement
      * @param dbConfig Database configuration object, can be passed in or read out of Nightwatch globals if saved under dbUsername, dbPassword, dbAddress, dbPort, dbName
